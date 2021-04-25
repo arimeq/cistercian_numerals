@@ -4,15 +4,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cysterski system zapisu liczb</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&family=Source+Sans+Pro:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Crimson Text', serif;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      margin: 5vh 10vw;
+    }
+    #main {
+      display: flex;
+      flex-flow: row nowrap;
+      gap: 5vw;
+      margin: 5vh 10vw;
+    }
+    section {
+      flex: 1 0 50vw;
+    }
+    section p { text-align: justify; }
+    form {
+      font-family: 'Source Sans Pro', sans-serif;
+      flex: 1 0 30vw;
+    }
+    #number {
+      margin: 10vh auto;
+    }
+  </style>
 </head>
 <body>
-  <p id="start-stop">
-    <button id="start-stop-button">Run the numbers</button>
-  </p>
-  <form id="set-number">
-    <label for="number-input">Set the number to:</label> <input id="number-input" type="number" value="2021">
-  </form>
-  <div id="number" style="margin: 10vh auto; text-align: center;"></div>
+  <h1>Cistercian numerals</h1>
+  <div id="main">
+    <section>
+      <p>The medieval Cistercian numerals, or "ciphers" in nineteenth-century parlance, were developed by the Cistercian monastic order in the early thirteenth century at about the time that Arabic numerals were introduced to northwestern Europe. They are more compact than Arabic or Roman numerals, with a single glyph able to indicate any integer from 1 to 9,999.</p>
+      <p>Digits are based on a horizontal or vertical stave, with the position of the digit on the stave indicating its place value (units, tens, hundreds or thousands). These digits are compounded on a single stave to indicate more complex numbers. The Cistercians eventually abandoned the system in favor of the Arabic numerals, but marginal use outside the order continued until the early twentieth century. </p>
+      <p>(continue reading on <a href="https://en.wikipedia.org/wiki/Cistercian_numerals" target="_blank">Wikipedia</a>)</p>
+    </section>
+    <form id="set-number">
+      <label for="number-input">Set the number to:</label><br>
+      <input id="number-input" type="number" value="2021">
+      <p id="start-stop"><button id="start-stop-button">Run the numbers</button></p>
+      <div id="number"></div>
+    </form>
+  </div>
   <script src="helpers.js"></script>
   <script>
     const runStr = 'Run';
