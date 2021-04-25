@@ -1,10 +1,11 @@
-const runStr = 'Run';
-const stopStr = 'Stop';
-toggleButton.innerText = runStr;
 let counter = numberInput.value
 let interval = 1000;
 let tmout;
 
+const runStr = 'Run';
+const stopStr = 'Stop';
+
+toggleButton.innerText = runStr;
 toggleButton.addEventListener('click', function() {
   if (this.innerText === runStr) {
     this.innerText = stopStr;
