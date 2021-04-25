@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cysterski system zapisu liczb</title>
+</head>
+<body>
+  <p id="start-stop">
+    <button id="start-stop-button">Run the numbers</button>
+  </p>
+  <form id="set-number">
+    <label for="number-input">Set the number to:</label> <input id="number-input" type="number" value="2021">
+  </form>
+  <div id="number" style="margin: 10vh auto; text-align: center;"></div>
+  <script src="helpers.js"></script>
+  <script>
+    const runStr = 'Run';
+    const stopStr = 'Stop';
+    const renderTarget = document.querySelector('#number');
+    const toggleButton = document.querySelector('#start-stop-button');
+    toggleButton.innerText = runStr;
+    const stopButton = document.querySelector('#stop');
+    const numberInput = document.querySelector('#number-input');
+    const setNumber = document.querySelector('#set-number');
+
+    let counter = numberInput.value
+    let interval = 1000;
+    let tmout;
+
+    toggleButton.addEventListener('click', function() {
+      if (this.innerText === runStr) {
+        run();
+        this.innerText = stopStr;
+      } else {
+        clearTimeout(tmout);
+        this.innerText = runStr;
+      }
+    });
+    setNumber.addEventListener('submit', (e) => { e.preventDefault(); renderNumber(numberInput.value); });
+    numberInput.addEventListener('change', (e) => { renderNumber(numberInput.value); });
+    numberInput.addEventListener('keyup', (e) => { renderNumber(numberInput.value); });
+
+    function renderNumber(number) {
+      counter = Number(number);
+      render(counter);
+    }
+
+    function run() {
+      counter++;
+      render(counter);
+      numberInput.value = counter;
+      interval = 1000;
+      if (counter > 9) {
+        interval = 100;
+      }
+      if (counter > 99) {
+        interval = 10;
+      }
+      if (counter > 999) {
+        interval = 1;
+      }
+      if (counter < 9999) {
+        tmout = setTimeout(run, interval);
+      }
+    };
+    render(counter);
+  </script>
+</body>
+</html>
