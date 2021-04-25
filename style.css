@@ -1,0 +1,25 @@
+body {
+  font-family: 'Crimson Text', serif;
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  margin: 5vh 10vw;
+}
+#main {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 5vw;
+  margin: 5vh 10vw;
+}
+section {
+  flex: 1 0 50vw;
+}
+section p { text-align: justify; }
+form {
+  font-family: 'Source Sans Pro', sans-serif;
+  flex: 1 0 30vw;
+}
+#number {
+  margin: 10vh auto;
+}

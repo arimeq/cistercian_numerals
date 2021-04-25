@@ -6,33 +6,7 @@
   <title>Cysterski system zapisu liczb</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&family=Source+Sans+Pro:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Crimson Text', serif;
-      margin: 0;
-      padding: 0;
-    }
-    h1 {
-      margin: 5vh 10vw;
-    }
-    #main {
-      display: flex;
-      flex-flow: row nowrap;
-      gap: 5vw;
-      margin: 5vh 10vw;
-    }
-    section {
-      flex: 1 0 50vw;
-    }
-    section p { text-align: justify; }
-    form {
-      font-family: 'Source Sans Pro', sans-serif;
-      flex: 1 0 30vw;
-    }
-    #number {
-      margin: 10vh auto;
-    }
-  </style>
+  <link href="style.css" rel="stylesheet">
 </head>
 <body>
   <h1>Cistercian numerals</h1>
@@ -49,58 +23,14 @@
       <div id="number"></div>
     </form>
   </div>
-  <script src="helpers.js"></script>
   <script>
-    const runStr = 'Run';
-    const stopStr = 'Stop';
-    const renderTarget = document.querySelector('#number');
-    const toggleButton = document.querySelector('#start-stop-button');
-    toggleButton.innerText = runStr;
-    const stopButton = document.querySelector('#stop');
-    const numberInput = document.querySelector('#number-input');
-    const setNumber = document.querySelector('#set-number');
-
-    let counter = numberInput.value
-    let interval = 1000;
-    let tmout;
-
-    toggleButton.addEventListener('click', function() {
-      if (this.innerText === runStr) {
-        run();
-        this.innerText = stopStr;
-      } else {
-        clearTimeout(tmout);
-        this.innerText = runStr;
-      }
-    });
-    setNumber.addEventListener('submit', (e) => { e.preventDefault(); renderNumber(numberInput.value); });
-    numberInput.addEventListener('change', (e) => { renderNumber(numberInput.value); });
-    numberInput.addEventListener('keyup', (e) => { renderNumber(numberInput.value); });
-
-    function renderNumber(number) {
-      counter = Number(number);
-      render(counter);
-    }
-
-    function run() {
-      counter++;
-      render(counter);
-      numberInput.value = counter;
-      interval = 1000;
-      if (counter > 9) {
-        interval = 100;
-      }
-      if (counter > 99) {
-        interval = 10;
-      }
-      if (counter > 999) {
-        interval = 1;
-      }
-      if (counter < 9999) {
-        tmout = setTimeout(run, interval);
-      }
-    };
-    render(counter);
+  const renderTarget = document.querySelector('#number');
+  const toggleButton = document.querySelector('#start-stop-button');
+  const stopButton = document.querySelector('#stop');
+  const numberInput = document.querySelector('#number-input');
+  const setNumber = document.querySelector('#set-number');
   </script>
+  <script src="helpers.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
